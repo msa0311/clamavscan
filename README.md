@@ -5,10 +5,10 @@
 ## About
 This is a highly available and scaleable RESTFul virus scanner dockerized to be able to deploy and operate it in different PaaS environments. 
 
-Dockerized open source antivirus daemon (clamav) combined with a open source RESTFul Spring service to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) interface within one decoupled container.
+Dockerized open source antivirus daemon (clamav) combined with a open source RESTFul Spring service to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) interface in a decoupled container.
 
 ## Description
-To be able to push the service within one container to PaaS environments we combined the projects [clamav-rest](https://github.com/solita/clamav-rest) and [mkodockx/docker-clamav](https://hub.docker.com/r/mkodockx/docker-clamav/) to get this docker container which runs a RESTFul spring service calling the clamd to scan POSTed files on interface /scan. ClamAV daemon as a Docker image. It *builds* with a current virus database and *runs* `freshclam` in the background constantly updating the virus signature database.
+To be able to push the service in one container to PaaS environments we combined the projects [clamav-rest](https://github.com/solita/clamav-rest) and [mkodockx/docker-clamav](https://hub.docker.com/r/mkodockx/docker-clamav/) to get this docker container which runs a RESTFul spring service calling the clamd to scan POSTed files on interface /scan. ClamAV daemon as a Docker image. It *builds* with a current virus database and *runs* `freshclam` in the background constantly updating the virus signature database.
 
 
 ## Usage / Push to hub.docker.com
