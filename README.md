@@ -1,8 +1,10 @@
-# clamav - RESTFul Virus Scanner Service
+# clamavscan - RESTFul Virus Scanner Service
 
 ![ClamAV Logo](http://www.clamav.net/assets/clamav-trademark.png)
 
 ## About
+This is a highly available and scaleable RESTFul virus scanner dockerized to be able to deploy and operate it in different PaaS environments. 
+
 Dockerized open source antivirus daemons and a open source RESTFul Spring service to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) proxy like [@solita](https://github.com/solita) made [clamav-rest](https://github.com/solita/clamav-rest).
 
 ## Description
@@ -26,7 +28,7 @@ To be able to push the service to cloudfoundry we combined the projects [clamav-
     cf push -f manifest.yml --hostname clamav-<CURRENT-ENV> --docker-image msarcher/docker-clamav-cf
 
 ## account hub.docker.com (TODO)
-Currently the global docker registry is used to push and pull the image. We should move the docker image to ABI MSI nexus and pull it from there during the deployment.
+Currently the global docker registry is used to push and pull the image. 
 
 ## License
 The used projects are licensed under MIT and GNU
