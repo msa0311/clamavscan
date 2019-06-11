@@ -27,8 +27,6 @@ To be able to push the service to cloudfoundry we combined the projects [clamav-
 	cf target -o MyOrg -s MySpace
     cf push -f manifest.yml --hostname clamav-<CURRENT-ENV> --docker-image msarcher/docker-clamav-cf
 
-## account hub.docker.com (TODO)
-Currently the global docker registry is used to push and pull the image. 
 
 ## License
 The used projects are licensed under MIT and GNU
