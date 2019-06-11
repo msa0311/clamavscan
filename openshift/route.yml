@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    version: VERSION_PLACEHOLDER
+  name: clamavscan
+  namespace: docker-demo-msarcher
+spec:
+  host: clamavscan-docker-demo-msarcher.e4ff.pro-eu-west-1.openshiftapps.com
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: clamavscan
+    weight: 100
+  wildcardPolicy: None

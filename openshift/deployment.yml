@@ -1,0 +1,47 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "clamavscan"
+spec:
+  template: 
+    metadata:
+      labels:
+        name: "clamavscan"
+        app: "clamavscan"
+        deploymentconfig: "clamavscan"
+    spec:
+      containers:
+        - name: "clamavscan"
+          image: "msarcher/clamavscan"
+          ports:
+            - containerPort: 8080
+              protocol: "TCP"
+          resources:
+            limits:
+              memory: 2Gi
+          livenessProbe:
+            exec:
+              command:
+                - /health.sh
+            failureThreshold: 3
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+          readinessProbe:
+            exec:
+              command:
+                - /health.sh
+            failureThreshold: 3
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+  replicas: 1
+  triggers:
+    - type: "ConfigChange" 
+  strategy: 
+    type: "Recreate"
+  paused: false 
+  revisionHistoryLimit: 2 
+  minReadySeconds: 0 
