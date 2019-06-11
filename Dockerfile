@@ -4,35 +4,30 @@ FROM debian:jessie
 ENV DEBIAN_VERSION jessie
 
 
+
+# initial install of av daemon
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
+        clamav-daemon \
+        clamav-freshclam \
+        wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # install java
-RUN \
-    echo "===> add webupd8 repository..."  && \
-    echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list  && \
-    echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list  && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886  && \
-    apt-get update
 RUN echo "===> install Java"  && \
-    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
-    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
-    DEBIAN_FRONTEND=noninteractive  apt-get install -y --force-yes oracle-java8-installer oracle-java8-set-default
+    echo debconf shared/accepted-oracle-license-v1-2 select true | debconf-set-selections  && \
+    echo debconf shared/accepted-oracle-license-v1-2 seen true | debconf-set-selections  && \
+    echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EA8CACC073C3DB2A && \
+    apt-get update  && \
+    DEBIAN_FRONTEND=noninteractive  apt-get install -y --force-yes oracle-java11-installer oracle-java11-set-default
 RUN echo "===> clean up..."  && \
-    rm -rf /var/cache/oracle-jdk8-installer  && \
+    rm -rf /var/cache/oracle-jdk11-installer  && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
 
-# initial install of av daemon
-RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ $DEBIAN_VERSION/updates main contrib non-free" >> /etc/apt/sources.list && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
-        clamav-daemon \
-        clamav-freshclam \
-        libclamunrar7 \
-        wget && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 # add the spring clamav-rest service to container and define working directory
 CMD mkdir /var/clamav-rest
