@@ -19,14 +19,11 @@ To be able to push the service in one container to PaaS environments we combined
 
 ## Run local and test
 
-    docker run -d -p8080:8080 msarcher/docker-clamav-cf
+    docker run -d -p8080:8080 msarcher/clamavscan
     sh ./testi.sh 
 
-## Run in cloudfoundry
-
-	cf target -o MyOrg -s MySpace
-    cf push -f manifest.yml --hostname clamav-<CURRENT-ENV> --docker-image msarcher/docker-clamav-cf
-
+## Run in openshift
+Import the YML files located in the "openshift" folder to your OpenShift Cluster.
 
 ## License
 The used projects are licensed under MIT and GNU
