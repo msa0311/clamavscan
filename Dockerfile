@@ -10,6 +10,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
         clamav-daemon \
         clamav-freshclam \
+        curl \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -59,4 +60,5 @@ EXPOSE 8080
 
 # av daemon bootstrapping
 ADD bootstrap.sh /
+ADD testi.sh /
 CMD ["/bootstrap.sh"]

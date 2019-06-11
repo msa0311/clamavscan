@@ -14,8 +14,8 @@ To be able to push the service in one container to PaaS environments we combined
 ## Usage / Push to hub.docker.com
 
 	mvn clean install -DskipTests
-    docker build -t msarcher/docker-clamav-cf .
-    docker push msarcher/docker-clamav-cf:latest
+    docker build -t msarcher/clamavscan .
+    docker push msarcher/clamavscan:latest
 
 ## Run local and test
 
