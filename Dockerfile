@@ -44,7 +44,8 @@ RUN wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
 # permission juggling
 RUN mkdir /var/run/clamav && \
     chown clamav:clamav /var/run/clamav && \
-    chmod 750 /var/run/clamav
+    chmod 750 /var/run/clamav/ && \
+    chmod 750 /var/log/clamav/ 
 
 # av configuration update
 RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
