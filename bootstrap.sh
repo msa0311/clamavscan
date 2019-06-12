@@ -8,7 +8,7 @@ freshclam -d &
 clamd &
 
 # start java spring rest service
-java -jar /var/clamav-rest/clamav-rest-1.0.2.jar --clamd.host=127.0.0.1 --clamd.port=3310 --clamd.timeout=10000 --clamd.maxfilesize="110000KB" --clamd.maxrequestsize="110000KB"
+java -jar /var/clamav-rest/clamav-rest-1.0.2.jar --debug --clamd.host=127.0.0.1 --clamd.port=3310 --clamd.timeout=10000 --clamd.maxfilesize="110000KB" --clamd.maxrequestsize="110000KB"
 
 # recognize PIDs
 pidlist=`jobs -p`
