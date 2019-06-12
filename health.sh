@@ -2,7 +2,7 @@
 
 echo "testing by scanning this file.."
 
-fo=$(curl -s -F "name=testfile" -F "file=@/health.sh" 127.0.0.1:8080/scan)
+fo=$(curl -s -F "file=@/health.sh" 127.0.0.1:8080/scan)
 
 
 if [ "$fo" != "Everything ok : true" ]
