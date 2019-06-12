@@ -4,7 +4,6 @@ metadata:
   labels:
     version: VERSION_PLACEHOLDER
   name: clamavscan
-  namespace: docker-demo-msarcher
 spec:
   host: clamavscan-docker-demo-msarcher.e4ff.pro-eu-west-1.openshiftapps.com
   port:
