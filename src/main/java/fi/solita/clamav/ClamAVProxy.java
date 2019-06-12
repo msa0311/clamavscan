@@ -35,8 +35,7 @@ public class ClamAVProxy {
    * @return Clamd scan result
    */
   @RequestMapping(value="/scan", method=RequestMethod.POST)
-  public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
-                                               @RequestParam("file") MultipartFile file) throws IOException{
+  public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException{
     if (!file.isEmpty()) {
       ClamAVClient a = new ClamAVClient(hostname, port, timeout);
       byte[] r = a.scan(file.getInputStream());
