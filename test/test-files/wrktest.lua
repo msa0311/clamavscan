@@ -19,7 +19,8 @@ local LastBoundary = "--" .. Boundary .. "--"
 
 local CRLF = "\r\n"
 
-local FileBody = read_txt_file("eicar.com.txt.jpg")
+--local FileBody = read_txt_file("eicar.com.txt.jpg")
+local FileBody = read_txt_file("docker-logo.png")
 
 -- We don't need different file names here because the test should
 -- always replace the uploaded file with the new one. This will avoid
