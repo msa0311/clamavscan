@@ -1,9 +1,0 @@
----
-
-applications:
-- name: clamav
-  #health-check-type: http
-  #health-check-http-endpoint: /
-  domain: internal.emea.vwapps.io
-  memory: 2048M
-
