@@ -25,6 +25,11 @@ To be able to push the service in one container to PaaS environments we combined
 ## Run in openshift
 Import the YML files located in the "openshift" folder to your OpenShift Cluster.
 
+## WRK benchmarking
+Download and install the HTTP benchmarking tool [WRK](https://github.com/wg/wrk) and use the lua script in "test/test-files/wrktest.lua".
+
+	wrk -t1 -c1 -d20 -s wrktest.lua http://localhost:8080/scan
+
 ## License
 The used projects are licensed under MIT and GNU
 
